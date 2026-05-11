@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicación Asertiva — 15 Tarjetas de Role-Playing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-oscuro: #1a3a5c;
+            --azul-medio: #2c5f8a;
+            --azul-claro: #3a7cb8;
+            --azul-suave: #e8f0f8;
+            --gris-oscuro: #4a4a4a;
+            --gris-medio: #7a7a7a;
+            --gris-claro: #f4f6f8;
+            --blanco: #ffffff;
+            --sombra: 0 4px 15px rgba(26, 58, 92, 0.10);
+            --sombra-hover: 0 8px 28px rgba(26, 58, 92, 0.18);
+            --radio: 14px;
+            --transicion: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gris-claro);
+            color: var(--gris-oscuro);
+            line-height: 1.7;
+        }
+
+        /* ========== ENCABEZADO ========== */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 60%, var(--azul-claro) 100%);
+            color: var(--blanco);
+            padding: 3rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 55%);
+            animation: rotar 25s linear infinite;
+        }
+
+        @keyframes rotar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+
+        .hero-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: pulso 2s ease-in-out infinite;
+        }
+
+        @keyframes pulso {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .hero h1 {
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .subtitulo {
+            font-size: clamp(0.95rem, 2.5vw, 1.25rem);
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .badge-duracion {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.14);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            margin-top: 1.2rem;
+            font-size: 0.92rem;
+            border: 1px solid rgba(255,255,255,0.22);
+        }
+
+        /* ========== CONTENEDOR ========== */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+        .seccion { margin: 2.5rem 0; }
+
+        .seccion-titulo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--azul-oscuro);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--azul-claro);
+        }
+
+        .seccion-titulo i { color: var(--azul-claro); font-size: 1.3rem; }
+
+        /* ========== FLASHCARDS GRID ========== */
+        .flashcards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* ========== CADA TARJETA ========== */
+        .flashcard {
+            background: var(--blanco);
+            border-radius: var(--radio);
+            box-shadow: var(--sombra);
+            overflow: hidden;
+            transition: var(--transicion);
+            border-top: 5px solid var(--azul-claro);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flashcard:hover {
+            box-shadow: var(--sombra-hover);
+            transform: translateY(-3px);
+        }
+
+        .flashcard-header {
+            background: linear-gradient(135deg, var(--azul-suave) 0%, var(--blanco) 100%);
+            padding: 1.2rem 1.5rem 1rem;
+            border-bottom: 1px solid #e8ecf0;
+        }
+
+        .flashcard-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            background: var(--azul-oscuro);
+            color: var(--blanco);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .flashcard-header h3 {
+            font-size: 1.05rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 0.2rem;
+        }
+
+        .flashcard-header .contexto {
+            font-size: 0.82rem;
+            color: var(--gris-medio);
+            font-style: italic;
+        }
+
+        .flashcard-body {
+            padding: 1.2rem 1.5rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .situacion {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            padding: 0.85rem 1rem;
+            background: var(--gris-claro);
+            border-radius: 8px;
+            border-left: 4px solid var(--azul-claro);
+            flex: 1;
+        }
+
+        .situacion strong { color: var(--azul-oscuro); }
+
+        /* ========== BOTONES DE ESTILO ========== */
+        .estilo-btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .estilo-btn {
+            flex: 1;
+            padding: 0.65rem 0.4rem;
+            border: 2px solid transparent;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 700;
+            transition: var(--transicion);
+            text-align: center;
+            font-family: inherit;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-pasivo {
+            background: #fff3e0;
+            color: #e65100;
+            border-color: #ffcc80;
+        }
+
+        .btn-pasivo:hover,
+        .btn-pasivo.active {
+            background: #e65100;
+            color: white;
+            border-color: #e65100;
+            transform: scale(1.03);
+        }
+
+        .btn-agresivo {
+            background: #fce4ec;
+            color: #c62828;
+            border-color: #ef9a9a;
+        }
+
+        .btn-agresivo:hover,
+        .btn-agresivo.active {
+            background: #c62828;
+            color: white;
+            border-color: #c62828;
+            transform: scale(1.03);
+        }
+
+        .btn-asertivo {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-color: #a5d6a7;
+        }
+
+        .btn-asertivo:hover,
+        .btn-asertivo.active {
+            background: #2e7d32;
+            color: white;
+            border-color: #2e7d32;
+            transform: scale(1.03);
+        }
+
+        /* ========== PANEL DE RESPUESTA ========== */
+        .respuesta-panel {
+            margin-top: 0.8rem;
+            padding: 1rem;
+            border-radius: 9px;
+            display: none;
+            animation: aparecer 0.35s ease;
+        }
+
+        .respuesta-panel.visible {
+            display: block !important;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .respuesta-panel.pasivo {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+        }
+
+        .respuesta-panel.agresivo {
+            background: #fce4ec;
+            border: 1px solid #ef9a9a;
+        }
+
+        .respuesta-panel.asertivo {
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+        }
+
+        .respuesta-panel .frase {
+            font-style: italic;
+            font-size: 0.88rem;
+            margin-bottom: 0.5rem;
+            padding: 0.6rem 0.8rem;
+            background: rgba(255,255,255,0.65);
+            border-radius: 6px;
+            line-height: 1.5;
+        }
+
+        .respuesta-panel .frase i {
+            margin-right: 0.3rem;
+        }
+
+        .respuesta-panel .reflexion {
+            font-size: 0.82rem;
+            line-height: 1.55;
+        }
+
+        .respuesta-panel .reflexion strong {
+            display: block;
+            margin-bottom: 0.15rem;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========== INSTRUCCIONES ========== */
+        .instrucciones-box {
+            background: var(--blanco);
+            border-radius: var(--radio);
+            box-shadow: var(--sombra);
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--azul-claro);
+        }
+
+        .instrucciones-box h4 {
+            color: var(--azul-oscuro);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .instrucciones-box ol {
+            padding-left: 1.5rem;
+        }
+
+        .instrucciones-box ol li {
+            margin-bottom: 0.4rem;
+            font-size: 0.92rem;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--azul-oscuro);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            margin-top: 3rem;
+        }
+
+        /* ========== IMPRESIÓN ========== */
+        @media print {
+            body { background: white; font-size: 10.5pt; }
+
+            .hero {
+                background: var(--azul-oscuro) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 1.5rem;
+            }
+
+            .hero::before { display: none; }
+
+            .flashcard {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .flashcard:hover { transform: none; box-shadow: none; }
+
+            .flashcards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .estilo-btn-group { display: none !important; }
+
+            .respuesta-panel {
+                display: block !important;
+                border: 1px solid #ccc;
+            }
+
+            .instrucciones-box { display: none; }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 820px) {
+            .flashcards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hero { padding: 2rem 1rem 3rem; }
+            .hero-icon { font-size: 2.5rem; }
+            .estilo-btn-group { flex-direction: column; }
+            .estilo-btn { min-width: unset; }
+            .seccion-titulo { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== ENCABEZADO ========== -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-icon"><i class="fas fa-comments"></i></div>
+            <h1>Comunicación Asertiva en Práctica Empresarial</h1>
+            <p class="subtitulo">15 tarjetas de role-playing — Situaciones reales para practicar</p>
+            <div class="badge-duracion">
+                <i class="fas fa-id-card"></i>
+                15 tarjetas interactivas &nbsp;|&nbsp;
+                <i class="fas fa-clock"></i>
+                Actividad de 2 horas
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ========== INSTRUCCIONES ========== -->
+        <section class="seccion">
+            <h2 class="seccion-titulo"><i class="fas fa-info-circle"></i> Cómo Usar las Tarjetas</h2>
+            <div class="instrucciones-box">
+                <h4><i class="fas fa-gamepad" style="color:var(--azul-claro)"></i> Dinámica Interactiva</h4>
+                <ol>
+                    <li><strong>Lee la situación</strong> de cada tarjeta con tu grupo.</li>
+                    <li><strong>Haz clic</strong> en el estilo que quieras explorar: Pasivo, Agresivo o Asertivo.</li>
+                    <li><strong>Aparecerá</strong> la frase típica de ese estilo y una reflexión sobre sus consecuencias.</li>
+                    <li><strong>Compara</strong> los tres estilos en cada tarjeta antes de pasar a la siguiente.</li>
+                    <li><strong>Representa</strong> la escena usando las frases como guía y luego improvisa.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ========== 15 TARJETAS ========== -->
+        <section class="seccion">
+            <h2 class="seccion-titulo"><i class="fas fa-theater-masks"></i> Tarjetas de Role-Playing — 15 Situaciones</h2>
+            <div class="flashcards-grid" id="flashcardsContainer">
+
+                <!-- Las 15 tarjetas se generan con JavaScript abajo -->
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p><i class="fas fa-comments"></i> Taller de Comunicación Asertiva en Práctica Empresarial &copy; 2026</p>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // ===== BASE DE DATOS DE 15 TARJETAS =====
+        const tarjetas = [
+            {
+                id: "card1",
+                num: 1,
+                titulo: "Sobrecarga de Trabajo",
+                contexto: "Reunión con el jefe de departamento",
+                situacion: "Tu supervisor te asigna un proyecto urgente con plazo de 2 días, pero ya tienes tres proyectos en curso con fechas límite similares.",
+                pasivo: {
+                    frase: "Eh… sí, claro, no se preocupe, lo haré. Ya me apañaré como pueda…",
+                    reflexion: "Aceptar sin cuestionar genera estrés, baja calidad y resentimiento. El supervisor desconoce tu carga real y seguirá asignando trabajo sin límites."
+                },
+                agresivo: {
+                    frase: "¡Otra vez! ¡Siempre me toca todo a mí! ¡Es injusto, busque a otro que lo haga!",
+                    reflexion: "La reacción agresiva quema puentes profesionales. Aunque la queja sea válida, la forma daña la relación y la reputación laboral."
+                },
+                asertivo: {
+                    frase: "Entiendo la urgencia del proyecto. Ahora mismo tengo tres proyectos con plazos similares. ¿Podríamos priorizar juntos cuál debo atender primero o negociar alguna fecha?",
+                    reflexion: "La asertividad expone la situación con datos, muestra disposición y propone una solución colaborativa."
+                }
+            },
+            {
+                id: "card2",
+                num: 2,
+                titulo: "Crítica Pública Injusta",
+                contexto: "Reunión de equipo frente a todos",
+                situacion: "Un compañero te critica delante de todo el equipo diciendo que tu parte del informe «dejó mucho que desear», pero él no revisó los datos que le enviaste a tiempo.",
+                pasivo: {
+                    frase: "Tienes razón… lo siento, la próxima vez lo haré mejor…",
+                    reflexion: "Asumir culpa injusta frente al equipo daña tu credibilidad. Los demás empezarán a percibirte como responsable de errores ajenos."
+                },
+                agresivo: {
+                    frase: "¡El incompetente eres tú! ¡Te envié todo hace una semana y ni lo miraste! ¡No tienes derecho!",
+                    reflexion: "Responder con agresión pública escala el conflicto y genera un ambiente tóxico. Aunque tengas razón, la forma destruye la relación."
+                },
+                asertivo: {
+                    frase: "Comprendo tu preocupación. Te envié los datos el lunes; si no los revisaste, puedo mostrártelos ahora. Me gustaría que en el futuro me comentes los problemas en privado primero.",
+                    reflexion: "Validas la preocupación, presentas hechos sin atacar, ofreces solución y estableces un límite respetuoso."
+                }
+            },
+            {
+                id: "card3",
+                num: 3,
+                titulo: "Negociación con un Cliente",
+                contexto: "Llamada telefónica con cliente exigente",
+                situacion: "Un cliente importante exige un descuento del 30% fuera de las políticas de la empresa, amenazando con cancelar el contrato si no accedes.",
+                pasivo: {
+                    frase: "Bueno… déjeme ver qué puedo hacer, voy a hablar con mi director para intentar conseguirle ese descuento…",
+                    reflexion: "Ceder ante amenazas envía el mensaje de que las políticas son negociables con presión. El cliente volverá a usar esta táctica."
+                },
+                agresivo: {
+                    frase: "Eso es imposible. Nuestras políticas son claras y no las voy a cambiar por usted. Si no le conviene, puede irse cuando quiera.",
+                    reflexion: "La rigidez agresiva pierde clientes y daña la imagen. Se puede mantener la firmeza sin ser hostil."
+                },
+                asertivo: {
+                    frase: "Entiendo que busque las mejores condiciones. Nuestro margen no permite un 30%, pero puedo ofrecerle un 15% más servicio premium durante 6 meses. Valoro nuestra relación y quiero encontrar una solución para ambos.",
+                    reflexion: "La asertividad comercial protege los intereses mientras muestra empatía y creatividad para ofrecer valor alternativo."
+                }
+            },
+            {
+                id: "card4",
+                num: 4,
+                titulo: "Idea Ignorada en Reunión",
+                contexto: "Reunión de planificación estratégica",
+                situacion: "Propones una mejora en el proceso de ventas. Un directivo pasa de largo tu idea sin comentar. Cinco minutos después, otro compañero presenta la misma idea y el directivo la elogia.",
+                pasivo: {
+                    frase: "No importa, mejor no digo nada… seguro que no era buena idea…",
+                    reflexion: "El silencio sistemático te vuelve invisible. Tus ideas no se valoran porque nunca se escuchan con claridad."
+                },
+                agresivo: {
+                    frase: "¡Esa es MI idea! ¡La acabo de decir hace cinco minutos! ¡Esto es un robo de ideas!",
+                    reflexion: "La acusación pública genera incomodidad general. La forma agresiva te posiciona como conflictivo."
+                },
+                asertivo: {
+                    frase: "Me alegra que la propuesta de Carlos genere interés. Es la misma línea que comenté antes: optimizar el funnel de ventas. Me gustaría profundizar en cómo implementarlo.",
+                    reflexion: "Reivindicar tu idea sin atacar demuestra madurez, seguridad y ganas de contribuir constructivamente."
+                }
+            },
+            {
+                id: "card5",
+                num: 5,
+                titulo: "Feedback a un Colaborador",
+                contexto: "Reunión one-to-one con un miembro del equipo",
+                situacion: "Eres líder y un colaborador ha entregado tres proyectos consecutivos con retraso y errores. Necesitas darle feedback correctivo sin desmotivarlo.",
+                pasivo: {
+                    frase: "Bueno… no te preocupes, sé que estás muy liado… ya está bien, no pasa nada…",
+                    reflexion: "Evitar el feedback necesario permite que el problema persista. El equipo percibe falta de liderazgo."
+                },
+                agresivo: {
+                    frase: "Esto es inaceptable. Tres proyectos seguidos mal y tarde. Si no cambias, voy a tener que tomar medidas.",
+                    reflexion: "El ataque personal genera miedo, no mejora. El colaborador se pone a la defensiva y la relación se deteriora."
+                },
+                asertivo: {
+                    frase: "He notado que los últimos tres proyectos han tenido retrasos y errores. Me gustaría entender qué está pasando para ayudarte. Juntos podemos definir un plan con plazos claros.",
+                    reflexion: "Describe hechos, no juicios. Abre diálogo, muestra apoyo y establece expectativas claras."
+                }
+            },
+            {
+                id: "card6",
+                num: 6,
+                titulo: "Salario no Renegociado",
+                contexto: "Revisión anual con Recursos Humanos",
+                situacion: "Llevas dos años sin un aumento salarial, has asumido más responsabilidades y tu rendimiento es sobresaliente. En la revisión anual, RRHH dice que «no hay presupuesto».",
+                pasivo: {
+                    frase: "Ah, bueno… entiendo, supongo que habrá que esperar… gracias de todos modos.",
+                    reflexion: "No defender tu valor profesional normaliza la inequidad. La empresa no reconocerá tu mérito si no lo reclamas."
+                },
+                agresivo: {
+                    frase: "¡Esto es explotación! Estoy haciendo el trabajo de dos personas y no me pagan. Voy a empezar a buscar otro empleo.",
+                    reflexion: "La amenaza directa cierra la negociación. Puede ser cierto, pero dicho así destruye la posibilidad de un acuerdo."
+                },
+                asertivo: {
+                    frase: "Entiendo las restricciones presupuestarias. Sin embargo, en los últimos dos años he asumido X responsabilidades adicionales con resultados medibles. ¿Podemos establecer un plan de revisión salarial a 6 meses con objetivos concretos?",
+                    reflexion: "Presentas datos, no emociones. Propones un camino estructurado que beneficia a ambas partes."
+                }
+            },
+            {
+                id: "card7",
+                num: 7,
+                titulo: "Horarios y Conciliación",
+                contexto: "Conversación con el supervisor directo",
+                situacion: "Tu empresa ha implementado un horario de salida a las 19:00 obligatorio. Tienes hijos pequeños y necesitas salir a las 17:30 para recogerlos. El supervisor dice que «todos deben cumplir la norma».",
+                pasivo: {
+                    frase: "Sí, sí, por supuesto… ya hablaré con mi pareja para ver cómo nos organizamos…",
+                    reflexion: "Renunciar a tus necesidades familiares genera un conflicto interno insostenible y afecta tu rendimiento."
+                },
+                agresivo: {
+                    frase: "¡Esa norma es ilegal y discriminatoria! ¡No pienso quedarme! ¡Voy a quejar a inspección!",
+                    reflexion: "Aunque puedas tener razón legal, la confrontación directa sin diálogo previo destruye la relación laboral."
+                },
+                asertivo: {
+                    frase: "Comprendo la necesidad de coordinación del equipo. Mi situación familiar requiere que salga a las 17:30. Propongo entrar a las 8:00, cumplir mis horas y estar disponible por correo después si surge algo urgente. ¿Podemos evaluarlo?",
+                    reflexion: "La asertividad propone una alternativa viable que respeta tanto tus necesidades como las de la empresa."
+                }
+            },
+            {
+                id: "card8",
+                num: 8,
+                titulo: "Plagio de un Colega",
+                contexto: "Trabajo colaborativo en proyecto de equipo",
+                situacion: "Descubres que un colega ha copiado secciones enteras de tu propuesta y las ha presentado como suyas ante la dirección. No te ha mencionado en absoluto.",
+                pasivo: {
+                    frase: "Bueno, al menos mi trabajo se usó… no vale la pena hacer un escándalo por esto.",
+                    reflexion: "Permitir el plagio refuerza la conducta del otro y te quita méritos legítimos ante la organización."
+                },
+                agresivo: {
+                    frase: "¡Es un ladrón! ¡Ha robado MI trabajo! ¡Exijo que lo sancionen inmediatamente!",
+                    reflexion: "La acusación visceral sin canal formal adecuado puede backfire y hacer que parezcas el problema."
+                },
+                asertivo: {
+                    frase: "He notado que la propuesta presentada incluye secciones de mi documento original sin mención. Me gustaría que en el futuro se reconozca la autoría. ¿Podemos hablar con el director para aclarar la contribución de cada uno?",
+                    reflexion: "Abordas el hecho con calma, proteges tu trabajo sin destruir al colega y buscas una solución institucional."
+                }
+            },
+            {
+                id: "card9",
+                num: 9,
+                titulo: "Reunión Improductiva Recurrente",
+                contexto: "Equipo de proyecto semanal",
+                situacion: "Cada lunes hay una reunión de 2 horas donde se repite lo mismo, no hay agenda clara y 8 personas pierden tiempo. El organizador es un directivo senior.",
+                pasivo: {
+                    frase: "Es lo que hay… al menos puedo revisar correos mientras tanto…",
+                    reflexion: "La resignación pasiva normaliza la ineficiencia y desperdicia horas valiosas de trabajo productivo."
+                },
+                agresivo: {
+                    frase: "¡Esta reunión es una pérdida de tiempo total! ¡Podríamos hacer esto en un email en 5 minutos!",
+                    reflexion: "Atacar directamente al organizador delante de todos genera resistencia y resentimiento."
+                },
+                asertivo: {
+                    frase: "Valoro que nos reunamos para alinearnos. He pensado que podríamos optimizar el tiempo con una agenda previa de 3 puntos y limitar la reunión a 45 minutos. ¿Te parece si lo probamos esta semana?",
+                    reflexion: "Propones mejora sin criticar la gestión actual. Ofreces una alternativa concreta y medible."
+                }
+            },
+            {
+                id: "card10",
+                num: 10,
+                titulo: "Acoso Laboral Sutil (Mobbing)",
+                contexto: "Oficina abierta — interacciones diarias",
+                situacion: "Un compañero hace comentarios sarcásticos sobre tu trabajo constantemente, te excluye de correos importantes y minimiza tus logros delante de otros. No es grave individualmente, pero es constante.",
+                pasivo: {
+                    frase: "Mejor lo ignoro… seguro que no lo hace con mala intención… ya se le pasará.",
+                    reflexion: "Ignorar el mobbing permite que se intensifique. La víctima internaliza el daño y pierde confianza."
+                },
+                agresivo: {
+                    frase: "¡Ya basta de tus comentarios estúpidos! ¡Eres un miserable y todo el mundo lo sabe!",
+                    reflexion: "Responder con agresión puede ser usado en tu contra como prueba de que TÚ eres el conflictivo."
+                },
+                asertivo: {
+                    frase: "He notado que en las últimas semanas has hecho varios comentarios sobre mi trabajo delante del equipo. Si tienes alguna observación, prefiero que la hablemos en privado. Trabajo mejor cuando hay respeto mutuo.",
+                    reflexion: "Nombras el comportamiento sin insultar, estableces un límite claro y ofreces un canal constructivo."
+                }
+            },
+            {
+                id: "card11",
+                num: 11,
+                titulo: "Venta Fallida y Reclamo",
+                contexto: "Atención presencial a cliente insatisfecho",
+                situacion: "Un cliente llega furioso porque el producto que compró no funciona como esperaba. Grita en medio de la tienda/oficina y exige una devolución inmediata fuera de la política de la empresa.",
+                pasivo: {
+                    frase: "Señor, tiene toda la razón, voy a ver si puedo hacer una excepción… por favor, baje la voz…",
+                    reflexion: "Ceder ante gritos refuerza que la agresión funciona como estrategia y daña la moral del equipo."
+                },
+                agresivo: {
+                    frase: "Señor, baje la voz o le pido que se retire. La política es clara y no voy a cambiarla por usted.",
+                    reflexion: "Aunque sea correcto aplicar la norma, la forma confrontativa en público puede escalar la situación peligrosamente."
+                },
+                asertivo: {
+                    frase: "Entiendo su frustración y lamento que el producto no cumpliera sus expectativas. Permítame explicarle nuestras opciones dentro de la política de devolución. Vamos a encontrar la mejor solución posible para usted.",
+                    reflexion: "La empatía desactiva la emoción. Mantienes la norma pero muestras genuino interés en ayudar."
+                }
+            },
+            {
+                id: "card12",
+                num: 12,
+                titulo: "Promoción que no Llega",
+                contexto: "Conversación informal con el gerente",
+                situacion: "Llevas 4 años en la empresa, has formado a dos personas que ahora tienen tu antiguo puesto con mejor salario, y tú sigues en el mismo nivel. Sabes que van a abrir una plaza de coordinador.",
+                pasivo: {
+                    frase: "Supongo que cuando estén listos pensarán en mí… no quiero parecer desesperado.",
+                    reflexion: "Esperar pasivamente a que «te vean» raramente funciona. En las empresas, quien no pide, no recibe."
+                },
+                agresivo: {
+                    frase: "Ya formé a dos personas y ni siquiera me consideran. Esto es un desprecio a mi trayectoria. O me ascienden o me voy.",
+                    reflexion: "El ultimátum puede funcionar una vez, pero genera desconfianza. Si te quedas, pierdes credibilidad."
+                },
+                asertivo: {
+                    frase: "Me entusiasma la posibilidad de la plaza de coordinador. En estos 4 años he demostrado resultados y he formado a compañeros que hoy ocupan roles superiores. Me gustaría presentar mi candidatura y conversar sobre qué esperan del puesto.",
+                    reflexion: "Presentas tu caso con hechos, muestras ambición profesional y abres diálogo formal."
+                }
+            },
+            {
+                id: "card13",
+                num: 13,
+                titulo: "Discrepancia con el Jefe",
+                contexto: "Reunión de planificación trimestral",
+                situacion: "Tu jefe propone una estrategia comercial que, según los datos que manejas, tiene alta probabilidad de fracaso. Es un tema que le importa mucho y lo ha presentado ante toda la dirección.",
+                pasivo: {
+                    frase: "Sí, buena idea… seguro que funciona… (por dentro: esto va a ser un desastre)",
+                    reflexion: "Guardar tu opinión profesional es irresponsable. Si el plan fracasa, también eres responsable por no haber hablado."
+                },
+                agresivo: {
+                    frase: "Esa estrategia no tiene ningún sentido. Los datos dicen lo contrario. ¿Ha consultado a alguien antes de proponer esto?",
+                    reflexion: "Cuestionar la competencia del jefe delante de todos es un error táctico grave, aunque tengas razón."
+                },
+                asertivo: {
+                    frase: "La propuesta tiene puntos interesantes. Me gustaría complementar con algunos datos que he analizado: en los últimos tres trimestres, el segmento X ha mostrado una tendencia descendente. ¿Podríamos explorar cómo ajustar la estrategia considerando esto?",
+                    reflexion: "Validas parcialmente, aportas datos objetivos y planteas la alternativa como complemento, no como ataque."
+                }
+            },
+            {
+                id: "card14",
+                num: 14,
+                titulo: "Delegación Tóxica",
+                contexto: "Interacción con un superior jerárquico",
+                situacion: "Tu jefe te delega sistemáticamente las tareas que nadie quiere hacer: informes aburridos, organización de eventos, resolución de quejas menores. Tu compañero de similar nivel no recibe ese tipo de asignaciones.",
+                pasivo: {
+                    frase: "No hay problema, para eso estamos… supongo que confía en mí para estas cosas.",
+                    reflexion: "Racionalizar la desigualdad te convierte en el «recurso comodín». Tu desarrollo profesional se estanca."
+                },
+                agresivo: {
+                    frase: "¡Siempre me toca la basura a mí! ¿Por qué a Carlos nunca le pide esto? ¡Esto es discriminación!",
+                    reflexion: "La queja comparativa sin datos concretos suena a resentimiento. Necesitas argumentos, no comparaciones."
+                },
+                asertivo: {
+                    frase: "He notado que en el último mes he asumido el 70% de las tareas administrativas no estratégicas. Me gustaría que revisáramos la distribución para poder enfocarme también en proyectos de mayor impacto. ¿Podemos redistribuir la carga?",
+                    reflexion: "Usas datos concretos, no emociones. Propones redistribución basándote en impacto, no en queja personal."
+                }
+            },
+            {
+                id: "card15",
+                num: 15,
+                titulo: "Presentación con Nervios",
+                contexto: "Exposición ante clientes y directivos",
+                situacion: "Debes presentar el informe anual ante clientes importantes y la dirección general. Te da pánico hablar en público y tiendes a hablar muy rápido, omitir datos clave y evitar el contacto visual.",
+                pasivo: {
+                    frase: "Voy a pedir que lo presente otro… yo no sirvo para esto, mejor que lo haga alguien con más experiencia.",
+                    reflexion: "Evitar sistemáticamente las situaciones que te generan miedo limita tu crecimiento profesional de forma permanente."
+                },
+                agresivo: {
+                    frase: "¡Esto es una injusticia! ¡No soy presentador, soy analista! ¡Que contraten a alguien para esto!",
+                    reflexion: "Rechazar la tarea con agresión te etiqueta como poco flexible y te cierra puertas de desarrollo."
+                },
+                asertivo: {
+                    frase: "Reconozco que hablar en público es un área donde puedo mejorar. Acepto la presentación y me gustaría recibir apoyo: ¿podríamos hacer un ensayo previo? También me gustaría que alguien del equipo me acompañe para las preguntas técnicas.",
+                    reflexion: "Admitir un área de mejora con honestidad y pedir apoyo específico demuestra madurez y voluntad de crecer."
+                }
+            }
+        ];
+
+        // ===== GENERAR LAS TARJETAS EN EL DOM =====
+        const container = document.getElementById("flashcardsContainer");
+
+        tarjetas.forEach(t => {
+            const cardHTML = `
+                <div class="flashcard" id="${t.id}">
+                    <div class="flashcard-header">
+                        <div class="flashcard-num">${t.num}</div>
+                        <h3>${t.titulo}</h3>
+                        <p class="contexto"><i class="fas fa-map-marker-alt"></i> ${t.contexto}</p>
+                    </div>
+                    <div class="flashcard-body">
+                        <div class="situacion">
+                            <strong><i class="fas fa-play-circle"></i> Situación:</strong><br>
+                            ${t.situacion}
+                        </div>
+                        <div class="estilo-btn-group">
+                            <button class="estilo-btn btn-pasivo" data-card="${t.id}" data-estilo="pasivo" onclick="mostrarRespuesta(this)">
+                                <i class="fas fa-arrow-down"></i> Pasivo
+                            </button>
+                            <button class="estilo-btn btn-agresivo" data-card="${t.id}" data-estilo="agresivo" onclick="mostrarRespuesta(this)">
+                                <i class="fas fa-fire"></i> Agresivo
+                            </button>
+                            <button class="estilo-btn btn-asertivo" data-card="${t.id}" data-estilo="asertivo" onclick="mostrarRespuesta(this)">
+                                <i class="fas fa-balance-scale"></i> Asertivo
+                            </button>
+                        </div>
+                        <div class="respuesta-panel pasivo" id="${t.id}-pasivo">
+                            <div class="frase"><i class="fas fa-quote-left"></i> "${t.pasivo.frase}"</div>
+                            <div class="reflexion">
+                                <strong><i class="fas fa-lightbulb"></i> Reflexión</strong>
+                                ${t.pasivo.reflexion}
+                            </div>
+                        </div>
+                        <div class="respuesta-panel agresivo" id="${t.id}-agresivo">
+                            <div class="frase"><i class="fas fa-quote-left"></i> "${t.agresivo.frase}"</div>
+                            <div class="reflexion">
+                                <strong><i class="fas fa-lightbulb"></i> Reflexión</strong>
+                                ${t.agresivo.reflexion}
+                            </div>
+                        </div>
+                        <div class="respuesta-panel asertivo" id="${t.id}-asertivo">
+                            <div class="frase"><i class="fas fa-quote-left"></i> "${t.asertivo.frase}"</div>
+                            <div class="reflexion">
+                                <strong><i class="fas fa-lightbulb"></i> Reflexión</strong>
+                                ${t.asertivo.reflexion}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML("beforeend", cardHTML);
+        });
+
+        // ===== FUNCIÓN INTERACTIVA =====
+        function mostrarRespuesta(boton) {
+            const cardId = boton.getAttribute("data-card");
+            const estilo = boton.getAttribute("data-estilo");
+            const card = document.getElementById(cardId);
+
+            // Desactivar TODOS los botones de esta tarjeta
+            const todosBotones = card.querySelectorAll(".estilo-btn");
+            todosBotones.forEach(btn => btn.classList.remove("active"));
+
+            // Ocultar TODOS los paneles de esta tarjeta
+            const todosPaneles = card.querySelectorAll(".respuesta-panel");
+            todosPaneles.forEach(panel => panel.classList.remove("visible"));
+
+            // Activar el botón clickeado
+            boton.classList.add("active");
+
+            // Mostrar el panel correspondiente
+            const panel = document.getElementById(`${cardId}-${estilo}`);
+            if (panel) {
+                panel.classList.add("visible");
+            }
+        }
+
+        // ===== ANIMACIÓN DE ENTRADA AL SCROLL =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.08 });
+
+        // Se aplicará después de generar las tarjetas
+        setTimeout(() => {
+            document.querySelectorAll(".flashcard").forEach(el => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(25px)";
+                el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+                observer.observe(el);
+            });
+        }, 100);
+    </script>
+
+</body>
+</html>
